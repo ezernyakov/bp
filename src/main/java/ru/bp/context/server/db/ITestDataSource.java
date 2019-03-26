@@ -3,6 +3,9 @@ package ru.bp.context.server.db;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import ru.bp.sql.Delete;
+import ru.bp.sql.Replace;
+import ru.bp.sql.Select;
 
 public interface ITestDataSource extends DataSource {
 
