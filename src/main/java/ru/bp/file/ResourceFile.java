@@ -1,4 +1,4 @@
-package ru.bp.context.server.fs;
+package ru.bp.file;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,6 +6,11 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import org.apache.commons.io.IOUtils;
+
+/**
+ * Класс для работы с файлами из ресурсов
+ *
+ */
 
 public class ResourceFile {
 

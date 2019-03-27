@@ -5,6 +5,7 @@ import jcifs.smb.SmbException;
 import jcifs.smb.SmbFile;
 import ru.bp.configuration.SmbConfiguration;
 import ru.bp.context.server.Server;
+import ru.bp.file.RemoteFileWorker;
 
 /**
  * Класс для работы с файловой системой сервера.

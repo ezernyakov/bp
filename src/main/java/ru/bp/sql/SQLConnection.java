@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
-import ru.bp.context.server.fs.ResourceFile;
+import ru.bp.file.ResourceFile;
 
 /**
  * Класс для работы с  PostgreSQL

@@ -1,4 +1,4 @@
-package ru.bp.context.server.fs;
+package ru.bp.file;
 
 import java.io.BufferedReader;
 import java.io.IOException;
