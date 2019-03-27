@@ -10,7 +10,7 @@ import java.util.Map;
 import ru.bp.context.server.fs.ResourceFile;
 
 /**
- * Class for working with PostgreSQL
+ * Класс для работы с  PostgreSQL
  */
 public class SQLConnection {
     protected String username;

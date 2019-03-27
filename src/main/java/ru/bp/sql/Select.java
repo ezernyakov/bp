@@ -15,12 +15,12 @@ public class Select {
     final Sql sql;
     final JpaSqlParameterSource parameterSource;
 
-    public Integer byPk() {
+    public List<Map<String, Object>> byPk() {
         final int count = jt.queryForInt(sql.selectCount().byPk(), parameterSource);
         if (count == 0) {
-            return 0;
+            return null;
         } else {
-            return jt.update(sql.delete().byPk(), parameterSource);
+            return jt.queryForList(sql.select().byPk(), parameterSource);
         }
     }
 

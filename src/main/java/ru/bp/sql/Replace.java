@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 /**
  * Выполняет замену записи об объекте по некоторому критерию.
- * Часть DSL для работы с базой.
  *
  */
 public class Replace {
