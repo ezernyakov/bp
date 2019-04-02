@@ -3,6 +3,11 @@ package ru.bp.context.server.db;
 import java.util.logging.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.bp.sql.Delete;
+import ru.bp.sql.JpaSqlParameterSource;
+import ru.bp.sql.Replace;
+import ru.bp.sql.Select;
+import ru.bp.sql.Sql;
 
 public class TestDataSource extends DriverManagerDataSource implements ITestDataSource {
 
@@ -29,6 +34,16 @@ public class TestDataSource extends DriverManagerDataSource implements ITestData
     @Override
     public Logger getParentLogger() {
         return Logger.getLogger("global");
+    }
+
+    @Override
+    public <T> T unwrap(Class<T> iface) {
+        return null;
+    }
+
+    @Override
+    public boolean isWrapperFor(Class<?> iface) {
+        return false;
     }
 }
 
