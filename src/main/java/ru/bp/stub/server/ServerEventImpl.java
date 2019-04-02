@@ -1,4 +1,4 @@
-package ru.bp.websocket.stubs;
+package ru.bp.stub.server;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,24 +13,27 @@ public class ServerEventImpl implements ServerEvent {
     private String eventTypeName;
 
     public ServerEventImpl(ServerEventType type, Object pld) {
-        //stub
+        //stub. do something...
     }
 
     @Override
     public boolean hasType(ServerEventType type) {
-        // stub
+        //stub. do something...
+
         return false;
     }
 
     @Override
     public <T> T getPayloadAs(Class<T> type) {
-        // stub
+        //stub. do something...
+
         return type.cast(eventPayload);
     }
 
     @JsonCreator
     private ServerEventImpl(@JsonProperty("type") String typeName, @JsonProperty("payload") Object payload) {
-        //stub
+        //stub. do something...
+
         eventTypeName = typeName;
         eventPayload = payload;
     }

@@ -2,10 +2,10 @@ package ru.bp.websocket;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-import ru.bp.websocket.stubs.Converter;
-import ru.bp.websocket.stubs.EventConverter;
-import ru.bp.websocket.stubs.ServerEvent;
-import ru.bp.websocket.stubs.ServerEventType;
+import ru.bp.stub.server.Converter;
+import ru.bp.stub.server.EventConverter;
+import ru.bp.stub.server.ServerEvent;
+import ru.bp.stub.server.ServerEventType;
 
 public class ResponseReader {
     private static final Converter<String, ServerEvent> converter = EventConverter.instance();

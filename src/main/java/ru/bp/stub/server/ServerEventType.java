@@ -1,4 +1,4 @@
-package ru.bp.websocket.stubs;
+package ru.bp.stub.server;
 
 public interface ServerEventType {
 

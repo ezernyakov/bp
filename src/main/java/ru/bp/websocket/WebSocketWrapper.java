@@ -11,12 +11,12 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.bp.websocket.stubs.Converter;
-import ru.bp.websocket.stubs.EventConverter;
-import ru.bp.websocket.stubs.ServerEvent;
-import ru.bp.websocket.stubs.ServerEventFactory;
-import ru.bp.websocket.stubs.ServerEventType;
-import ru.bp.websocket.stubs.ServerEventTypeFactory;
+import ru.bp.stub.server.Converter;
+import ru.bp.stub.server.EventConverter;
+import ru.bp.stub.server.ServerEvent;
+import ru.bp.stub.server.ServerEventFactory;
+import ru.bp.stub.server.ServerEventType;
+import ru.bp.stub.server.payloads.FormLogoutShowPld;
 
 
 public class WebSocketWrapper extends WebSocketListener {
@@ -27,7 +27,7 @@ public class WebSocketWrapper extends WebSocketListener {
         private static final BlockingQueue<String> events = new LinkedBlockingQueue<>();
 
         private static WebSocket socket;
-        private static final String url = "<url>";
+        private static final String url = "127.0.0.1:8080"; // stub. set url
 
         @Before(value = "@WebSockets")
         public void initConnection() {
@@ -53,13 +53,9 @@ public class WebSocketWrapper extends WebSocketListener {
     }
 
         private void logout() {
-        ServerEvent event = ServerEventFactory.userLogout(new UserLogoutPld());
+        ServerEvent event = ServerEventFactory.userLogout();
         send(event);
-        receive(ServerEventTypeFactory.formLoginShow(), FormLoginShowPld.class);
-
-        event = ServerEventFactory.startCfgGet();
-        send(event);
-        receive(ServerEventTypeFactory.startCfgPut(), StartCfgPutPld.class);
+        receive(ServerEventFactory.formLogoutShow(), FormLogoutShowPld.class);
     }
 
         @Override

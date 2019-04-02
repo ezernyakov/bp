@@ -1,4 +1,4 @@
-package ru.bp.websocket.stubs;
+package ru.bp.stub.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

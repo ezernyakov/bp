@@ -1,4 +1,4 @@
-package ru.bp.websocket.stubs;
+package ru.bp.stub.server;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,13 +18,13 @@ public class EventConverter implements Converter<String, ServerEvent> {
 
     @Override
     public String toEx(ServerEvent event) throws JsonProcessingException {
-        //stub
+        //stub. do something...
         return mapper.writeValueAsString(event);
     }
 
     @Override
     public ServerEvent fromEx(String json) throws IOException {
-        //stub
+        //stub. do something...
         return mapper.readValue(json, ServerEventImpl.class);
     }
 
