@@ -3,10 +3,11 @@ package ru.bp.steps.ui;
 import com.codeborne.selenide.Selenide;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import java.util.List;
 import ru.bp.context.Context;
 import ru.bp.pages.ClientListPage;
-import ru.bp.pages.ClientPage;
 import ru.bp.stub.server.entity.ClientEntity;
 
 public class ClientSteps {
@@ -19,7 +20,7 @@ public class ClientSteps {
     }
 
     @Given("^на сервере нет клиентов с идентификатором:$")
-    public void clearCashiers(List<String> ids) throws IllegalAccessException {
+    public void clearClients(List<String> ids) throws IllegalAccessException {
         for (String id : ids) {
             ClientEntity client = new ClientEntity();
             client.setIdNumber(id);
@@ -29,12 +30,31 @@ public class ClientSteps {
     }
 
     @Given("^на сервере заведены клиенты$")
-    public void createUser(List<ClientsVO> clients) {
-        ServerManager manager = context.getCurrentServer().rmi(ServerManager.class, Jndi.CLIENTS.getName());
-        for (ClientsVO client : clients) {
-            manager.addCashier(null, client);
-        }
+    public void createClients(List<ClientEntity> clients) {
+        // добавить через веб-сокеты
     }
 
+    @When("(Администратор/Менеджер )?создает нового клиента")
+    public void createClient(ClientEntity client) {
+        clientListPage.createNewClient()
+                .fillClient(client)
+                .goToClientList();
+    }
 
+    @When("(Администратор/Менеджер )?редактирует клиента")
+    public void editClient(ClientEntity client) {
+        clientListPage.openClient(client.getIdNumber())
+                .fillClient(client)
+                .goToClientList();
+    }
+
+    @Then("в списке есть клиент")
+    public void verifyClientExist(ClientEntity client) {
+        clientListPage.verifyClientExist(client);
+    }
+
+    @Then("в списке отсутствует клиент с идентификатором {string}")
+    public void verifyClientAbsent(String id) {
+        clientListPage.verifyClientAbsent(id);
+    }
 }

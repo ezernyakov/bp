@@ -6,11 +6,18 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ru.bp.context.User;
 import ru.bp.pages.LoginPage;
 
 public class LoginSteps {
 
     private LoginPage loginPage = Selenide.page(LoginPage.class);
+
+    @When("{user} авторизуется на сервере")
+    public void login(User user) {
+        loginPage = open("/", LoginPage.class);
+        loginPage.login(user.getLogin(), user.getPassword());
+    }
 
     @When("^пользователь логинится на сервере$")
     public void login(String login, String password) {
