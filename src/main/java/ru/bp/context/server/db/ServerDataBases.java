@@ -2,32 +2,24 @@ package ru.bp.context.server.db;
 
 public class ServerDataBases extends DataBases {
 
-    private ITestDataSource set;
-    private ITestDataSource loyal;
-    private ITestDataSource operday;
+    private ITestDataSource client;
+    private ITestDataSource order;
 
     public ServerDataBases(String host, int port, String user, String password) {
         super(host, port, user, password);
     }
 
-    public ITestDataSource set() {
-        if (set == null) {
-            set = createDataSource("set");
+    public ITestDataSource clients() {
+        if (client == null) {
+            client = createDataSource("clients");
         }
-        return set;
+        return client;
     }
 
-    public ITestDataSource loyal() {
-        if (loyal == null) {
-            loyal = createDataSource("set_loyal");
+    public ITestDataSource orders() {
+        if (order == null) {
+            order = createDataSource("orders");
         }
-        return loyal;
-    }
-
-    public ITestDataSource operday() {
-        if (operday == null) {
-            operday = createDataSource("set_operday");
-        }
-        return operday;
+        return order;
     }
 }

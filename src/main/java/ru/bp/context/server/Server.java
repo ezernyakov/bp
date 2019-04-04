@@ -6,6 +6,7 @@ import java.net.URL;
 import ru.bp.configuration.ServerConfiguration;
 import ru.bp.context.server.db.ServerDataBases;
 import ru.bp.context.server.fs.RemoteFileSystem;
+import ru.bp.stub.server.rmi.HttpClient;
 
 /**
  * Объектное представление тестового сервера.
@@ -17,11 +18,13 @@ public class Server {
     private final ServerConfiguration configuration;
     private ServerDataBases db;
     private RemoteFileSystem io;
+    private final HttpClient hc;
 
 
     public Server(ServerConfiguration serverConfiguration) throws MalformedURLException {
         this.configuration = serverConfiguration;
         this.url = new URL("http", serverConfiguration.host(), serverConfiguration.guiPort(), "");
+        this.hc = new HttpClient();
     }
 
     /**
@@ -48,6 +51,16 @@ public class Server {
         return io;
     }
 
+    /**
+     * Инструмент для создания прокси-бинов для работы с сервреной реализацией по rmi.
+     *
+     * @param beanClass класс интерфейса бина, для которого необходимо создать прокси.
+     * @param jndiName  имя бина формата java:app[/module name]/enterprise bean name[/interface name]
+     */
+    public <T> T rmi(Class<T> beanClass, String jndiName) {
+        return hc.find(beanClass, jndiName);
+    }
+
     public String getHost() {
         return configuration.host();
     }
@@ -55,5 +68,6 @@ public class Server {
     public ServerConfiguration getConfiguration() {
         return configuration;
     }
+
 
 }
