@@ -1,8 +1,22 @@
 package ru.bp.stub.server.entity;
 
-public class OrderOperationsEntity {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+/**
+ * Сущность, описывающая операции по счету
+ */
+
+@Entity
+@Table(name = "OrdersOperations")
+public class OrderOperationsEntity implements Serializable {
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "sum")
     private String sumOperation;
 
     public void setType(String type) {
