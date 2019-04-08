@@ -8,6 +8,7 @@ import cucumber.api.java.en.When;
 import java.util.List;
 import ru.bp.context.Context;
 import ru.bp.pages.ClientListPage;
+import ru.bp.stub.server.ServerManager;
 import ru.bp.stub.server.entity.ClientEntity;
 
 public class ClientSteps {
@@ -31,7 +32,10 @@ public class ClientSteps {
 
     @Given("^на сервере заведены клиенты$")
     public void createClients(List<ClientEntity> clients) {
-        // добавить через веб-сокеты
+        ServerManager manager = context.getCurrentServer().rmi(ServerManager.class, "<jndi-name>");
+        for(ClientEntity client: clients) {
+            manager.addClient(client);
+        }
     }
 
     @When("(Администратор/Менеджер )?создает нового клиента")

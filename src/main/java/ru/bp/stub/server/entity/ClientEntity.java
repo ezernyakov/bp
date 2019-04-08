@@ -1,10 +1,28 @@
 package ru.bp.stub.server.entity;
 
-public class ClientEntity {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-    private String firstName;
-    private String middleName;
+/**
+ * Сущность, описывающая клиента
+ */
+
+@Entity
+@Table(name = "Clients")
+public class ClientEntity implements Serializable {
+
+    @Column(name = "id")
     private String idNumber;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "middle_name")
+    private String middleName;
+
+    @Column(name = "last_name")
     private String lastName;
 
 
