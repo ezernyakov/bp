@@ -5,20 +5,21 @@ import java.util.Map;
 
 public enum User {
 
-    ADMINISTRATOR("Администратор", "password"),
-    MANAGER("Менеджер", "qwerty"),
-    SERVICE_ENGINEER("Инженер", "service"),
-    FINANCE_MANAGER("Специалист отдела финансов", "fin123"),
+    ADMINISTRATOR("Администратор", "admin", "password"),
+    MANAGER("Менеджер", "manager", "qwerty"),
+    SERVICE_ENGINEER("Инженер", "service", "service"),
+    FINANCE_MANAGER("Специалист отдела финансов", "finance", "fin123"),
     ;
 
-    private static Map<String, User> logins = new HashMap<>();
+    private static Map<String, User> roles = new HashMap<>();
 
+    private String role;
     private String login;
     private String password;
 
     static {
         for (User user : User.values()) {
-            logins.put(user.getLogin(), user);
+            roles.put(user.getLogin(), user);
         }
     }
 
@@ -30,13 +31,18 @@ public enum User {
         return password;
     }
 
-    User(String login, String password) {
+    public String getRole() {
+        return role;
+    }
+
+    User(String role, String login, String password) {
+        this.role = role;
         this.login = login;
         this.password = password;
     }
 
     public static User getUser(String value) {
-        return logins.get(value);
+        return roles.get(value);
     }
 }
 

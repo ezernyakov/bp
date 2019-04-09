@@ -62,8 +62,7 @@ public class ClientSteps {
     }
 
     private void sendClient(ClientEntity client) {
-        ServerEvent event;
-        event = ServerEventFactory.formClientCreate(client);
+        ServerEvent event = ServerEventFactory.formClientCreate(client);
         socket.send(event);
         FormClientCreateShowPld clientForm = socket.receive(ServerEventFactory.formClientCreateShow(), FormClientCreateShowPld.class);
         Assert.assertTrue(clientForm.isSuccess());
